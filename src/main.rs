@@ -1,7 +1,24 @@
 use std::env;
 use std::process::Command;
 
+fn ensure_git_installed() {
+    match Command::new("git").arg("--version").status() {
+        Ok(status) if status.success() => {}
+        Ok(_) => {
+            eprintln!("Git was found, but `git --version` did not run successfully.");
+            std::process::exit(1);
+        }
+        Err(error) => {
+            eprintln!("Git is not installed or not available in PATH. Install Git first, then run this tool again.");
+            eprintln!("Details: {error}");
+            std::process::exit(1);
+        }
+    }
+}
+
 fn main() {
+    ensure_git_installed();
+
     let args: Vec<String> = env::args().collect();
 
     if args.len() != 3 {
