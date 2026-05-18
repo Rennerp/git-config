@@ -74,3 +74,12 @@ If you want to build it yourself instead of downloading a release:
 ```bash
 cargo build --release
 ```
+
+## License
+
+Licensed under either of these, at your option:
+
+- MIT
+- Apache-2.0
+
+See [LICENSE-MIT](LICENSE-MIT) and [LICENSE-APACHE](LICENSE-APACHE).
